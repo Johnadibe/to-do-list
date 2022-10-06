@@ -49,7 +49,7 @@ formInput.addEventListener('submit', addTodo);
 const deleteTodo = (index) => {
   const newTodo = todos.filter((element) => element.index !== index);
   todos.length = 0;
-  let i = 0;
+  let i = 1;
   newTodo.forEach((element) => {
     element.index = i;
     i += 1;
