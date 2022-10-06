@@ -2,13 +2,14 @@
 
 # To Do List Structure
 
-This project is to build a simple Html list of To Do tasks.
+This project is to implement the CRUD (create, read, update, delete) methods in a simple list of To Do tasks.
 
 ## Built With
 
 - HTML
 - CSS
 - JavaScript
+- Webpack
 - Visual Studio Code
 
 ## Live Demo (if available)
@@ -24,6 +25,10 @@ $ git clone https://github.com/Johnadibe/to-do-list.git
 $ git checkout -b to-do-list-structure
 
 $ git pull origin to-do-list-structure
+
+$ npm install webpack webpack-cli --save-dev
+
+$ npm start To run the project
 
 ### Prerequisites
 

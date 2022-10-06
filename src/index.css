@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap');
+@import url('https://unicons.iconscout.com/release/v4.0.0/css/line.css');
 
 * {
   margin: 0;
@@ -9,6 +10,8 @@
 body {
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
+  display: flex;
+  justify-content: center;
 }
 
 button {
@@ -18,12 +21,9 @@ button {
 }
 
 .container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  min-width: 40%;
+  min-width: 50%;
   background-color: #fff;
+  margin-top: 10vh;
   box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
 }
 
@@ -40,13 +40,14 @@ button {
   color: rgba(100, 100, 111, 0.8);
 }
 
-.item {
+.list-item {
+  width: 100%;
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: 1fr auto;
   justify-content: center;
   align-items: center;
   gap: 25px;
-  padding: 14px 18px;
+  padding: 4px 18px;
   border-bottom: 1px solid rgba(100, 100, 111, 0.2);
 }
 
@@ -67,11 +68,17 @@ button {
 }
 
 .to-do-title,
-.description {
+.todo-description {
   font-size: 18px;
   font-weight: 400;
   line-height: 20px;
   color: rgb(84, 88, 98);
+}
+
+label {
+  display: flex;
+  align-items: center;
+  gap: 25px;
 }
 
 .checkbox {
@@ -80,14 +87,18 @@ button {
   width: 18px;
 }
 
-.description {
+.todo-description {
+  border: none;
+  outline: none;
   font-weight: 300;
   color: rgb(0, 0, 0);
+  flex: 1;
+  font-family: 'Open Sans', sans-serif;
+  padding: 15px;
 }
 
-.drag-btn {
-  font-size: 24px;
-  color: rgba(100, 100, 111, 0.8);
+.trash-container button {
+  font-size: 18px;
 }
 
 .clear-all {
