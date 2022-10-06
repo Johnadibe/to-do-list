@@ -2,7 +2,7 @@
 
 # To Do List Structure
 
-This project is to implement the CRUD (create, read, update, delete) methods in a simple list of To Do tasks.
+This project is to implement the CRUD (create, read, update, delete) methods and add interactiveness in a simple list of To Do tasks.
 
 ## Built With
 
