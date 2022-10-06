@@ -1,43 +1,69 @@
 import './index.css';
+import { updateTodo } from './updateTodo.js'
 
-const listData = [{
-  description: 'wash the dishes',
-  completed: true,
-  index: 1,
-},
-{
-  description: 'complete To Do list project',
-  completed: true,
-  index: 2,
-},
-{
-  description: 'prepare for a seminar',
-  completed: true,
-  index: 3,
-},
-];
+const formInput = document.querySelector('#form-input');
+const todoLists = document.querySelector('.to-do-lists');
+const todoInput = document.querySelector('.to-do-input');
 
-window.addEventListener('load', () => {
-  const ul = document.querySelector('.to-do-lists');
-  for (let i = 0; i < listData.length; i += 1) {
-    const listItem = document.createElement('li');
-    listItem.classList = 'item';
-    listData.id = listData[i].index;
-    ul.appendChild(listItem);
+let todos = JSON.parse(localStorage.getItem('todos'));
+const displayTodo = () => {
+    let li = '';
+    if (todos) {
+        todos.forEach((todo) => {
+            const completed = todo.completed ? 'checked' : '';
+            li += `<li class="list-item">
+                        <label for="">
+                            <input type="checkbox" ${completed} class="checkbox" data-check="${todo.index}">
+                            <input type="text" class="todo-description" data-desc="${todo.index}" value="${todo.description}">
+                        </label>
+                        <div class="trash-container">
+                            <button class="trash-btn" id="${todo.index}">&#935;</button>
+                        </div>
+                    </li>`;
+        });
+    }
+    todoLists.innerHTML = li;
+};
+displayTodo();
 
-    const input = document.createElement('input');
-    input.classList = 'checkbox';
-    input.type = 'checkbox';
-    listItem.appendChild(input);
+const addTodo = (e) => {
+    e.preventDefault();
+    const userInput = todoInput.value.trim();
+    todoInput.value = '';
+    if (!userInput) return;
+    if (!todos) {
+        todos = [];
+    }
+    const list = {
+        description: userInput,
+        completed: false,
+        index: todos.length,
+    };
+    todos.push(list);
+    localStorage.setItem('todos', JSON.stringify(todos));
+    displayTodo();
+}
 
-    const description = document.createElement('p');
-    description.classList = 'description';
-    description.innerHTML = listData[i].description;
-    listItem.appendChild(description);
+formInput.addEventListener('submit', addTodo);
 
-    const dragBtn = document.createElement('button');
-    dragBtn.classList = 'drag-btn';
-    dragBtn.innerHTML = '&#65049';
-    listItem.appendChild(dragBtn);
-  }
+const deleteTodo = (index) => {
+    const newTodo = todos.filter((element) => element.index !== index);
+    todos.length = 0;
+    let i = 0;
+    newTodo.forEach((element) => {
+        element.index = i;
+        i = i + 1;
+    });
+    todos.push(...newTodo);
+    localStorage.setItem('todos', JSON.stringify(todos));
+    displayTodo();
+};
+
+todoLists.addEventListener('click', (e) => {
+    if (e.target.classList.contains('trash-btn')) {
+        const index = parseInt(e.target.getAttribute('id'), 10);
+        deleteTodo(index);
+    }
 });
+
+todoLists.addEventListener('click', updateTodo);
