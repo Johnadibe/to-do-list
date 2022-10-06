@@ -1,9 +1,11 @@
 import './index.css';
 import updateTodo from './updateTodo.js';
+import clearToDo from './clear.js';
 
 const formInput = document.querySelector('#form-input');
 const todoLists = document.querySelector('.to-do-lists');
 const todoInput = document.querySelector('.to-do-input');
+const clearBtn = document.querySelector('.clear-all-btn');
 
 let todos = JSON.parse(localStorage.getItem('todos'));
 const displayTodo = () => {
@@ -67,3 +69,20 @@ todoLists.addEventListener('click', (e) => {
 });
 
 todoLists.addEventListener('click', updateTodo);
+
+clearBtn.addEventListener('click', () => {
+  const clearSet = JSON.parse(localStorage.getItem('todos')) || [];
+  const notCompleted = clearSet.filter((todo) => !todo.completed);
+  todos.length = 0;
+  let i = 0;
+  notCompleted.forEach((element) => {
+    element.index = i;
+    i += 1;
+  });
+
+  todos.push(...notCompleted);
+  localStorage.setItem('todos', JSON.stringify(todos));
+  displayTodo();
+});
+
+todoLists.addEventListener('click', clearToDo);
