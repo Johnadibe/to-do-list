@@ -26,6 +26,10 @@ $ git checkout -b to-do-list-structure
 
 $ git pull origin to-do-list-structure
 
+$ npm install webpack webpack-cli --save-dev
+
+$ npm start To run the project
+
 ### Prerequisites
 
 No prerequisties needed
