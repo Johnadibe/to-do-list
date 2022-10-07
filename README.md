@@ -14,7 +14,7 @@ This project is to implement the CRUD (create, read, update, delete) methods and
 
 ## Live Demo (if available)
 
-[No Live Demo Link At The Moment]()
+[See Live Demo](https://johnadibe.github.io/to-do-list/dist/)
 
 ## Getting Started
 
