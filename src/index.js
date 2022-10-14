@@ -1,4 +1,7 @@
 import './index.css';
+import {
+  todos, addTodo, deleteTodo, storeTodo, getTodo,
+} from './addDelete.js';
 import updateTodo from './updateTodo.js';
 import clearToDo from './clear.js';
 
@@ -7,7 +10,6 @@ const todoLists = document.querySelector('.to-do-lists');
 const todoInput = document.querySelector('.to-do-input');
 const clearBtn = document.querySelector('.clear-all-btn');
 
-let todos = JSON.parse(localStorage.getItem('todos'));
 const displayTodo = () => {
   let li = '';
   if (todos) {
@@ -26,45 +28,26 @@ const displayTodo = () => {
   }
   todoLists.innerHTML = li;
 };
+getTodo();
 displayTodo();
 
-const addTodo = (e) => {
+formInput.addEventListener('submit', (e) => {
   e.preventDefault();
-  const userInput = todoInput.value.trim();
+  if (todoInput.value === '') return;
+  addTodo(todoInput, todos);
+  storeTodo(todos);
+  getTodo();
+  displayTodo();
   todoInput.value = '';
-  if (!userInput) return;
-  if (!todos) {
-    todos = [];
-  }
-  const list = {
-    description: userInput,
-    completed: false,
-    index: todos.length,
-  };
-  todos.push(list);
-  localStorage.setItem('todos', JSON.stringify(todos));
-  displayTodo();
-};
-
-formInput.addEventListener('submit', addTodo);
-
-const deleteTodo = (index) => {
-  const newTodo = todos.filter((element) => element.index !== index);
-  todos.length = 0;
-  let i = 1;
-  newTodo.forEach((element) => {
-    element.index = i;
-    i += 1;
-  });
-  todos.push(...newTodo);
-  localStorage.setItem('todos', JSON.stringify(todos));
-  displayTodo();
-};
+});
 
 todoLists.addEventListener('click', (e) => {
   if (e.target.classList.contains('trash-btn')) {
     const index = parseInt(e.target.getAttribute('id'), 10);
-    deleteTodo(index);
+    deleteTodo(index, todos);
+    displayTodo();
+    storeTodo(todos);
+    getTodo();
   }
 });
 
@@ -79,7 +62,6 @@ clearBtn.addEventListener('click', () => {
     element.index = i;
     i += 1;
   });
-
   todos.push(...notCompleted);
   localStorage.setItem('todos', JSON.stringify(todos));
   displayTodo();
