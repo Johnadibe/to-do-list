@@ -1,6 +1,6 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# To Do List Structure
+# To Do List
 
 This project is to implement the CRUD (create, read, update, delete) methods and add interactiveness in a simple list of To Do tasks.
 
@@ -10,6 +10,7 @@ This project is to implement the CRUD (create, read, update, delete) methods and
 - CSS
 - JavaScript
 - Webpack
+- Jest
 - Visual Studio Code
 
 ## Live Demo (if available)
@@ -45,6 +46,13 @@ No prerequisties needed
 - GitHub: [@githubhandle](https://github.com/johnadibe)
 - Twitter: [@twitterhandle](https://twitter.com/JohnAdibe2)
 - LinkedIn: [LinkedIn](https://linkedin.com/in/john-adibe-400b36166/)
+
+👤 **John Kpordje**
+
+- GitHub: [@Outkarm](https://github.com/Outkarm)
+- Twitter: [@outkarm](https://twitter.com/outkarm)
+- LinkedIn: [John Kpordje](https://www.linkedin.com/in/john-kpordje-866749241/)
+
 
 ## 🤝 Contributing
 
